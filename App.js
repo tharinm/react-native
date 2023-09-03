@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  ScrollView,
+} from "react-native";
 
 export default function App() {
   const [goals, setGoals] = useState([]);
@@ -22,16 +29,22 @@ export default function App() {
           onChangeText={(text) => setAddList(text)} // Update addList here
           value={addList} // Bind the input value to addList
         />
-        <Button title="Add Goal" onPress={handleAddGoal} style={styles.button}/> 
+        <Button
+          title="Add Goal"
+          onPress={handleAddGoal}
+          style={styles.button}
+        />
       </View>
       <View>
-        {goals.map((val, key) => {
-          return (
-            <View key={key} style={styles.list}>
-              <Text>{val}</Text>
-            </View>
-          );
-        })}
+        <ScrollView>
+          {goals.map((val, key) => {
+            return (
+              <View key={key} style={styles.list}>
+                <Text>{val}</Text>
+              </View>
+            );
+          })}
+        </ScrollView>
       </View>
     </View>
   );
@@ -52,16 +65,16 @@ const styles = StyleSheet.create({
     padding: 10,
     marginRight: 12,
   },
-  button:{
-    backgroundColor:"green",
-    alignSelf: "center", 
-    color:"yellow"
+  button: {
+    backgroundColor: "green",
+    alignSelf: "center",
+    color: "yellow",
   },
-  list:{
-  marginTop:20,
-  padding:10,
-    width:"100%",
-    backgroundColor:'skyblue',
-    borderRadius:8
-  }
+  list: {
+    marginTop: 20,
+    padding: 10,
+    width: "100%",
+    backgroundColor: "skyblue",
+    borderRadius: 8,
+  },
 });
