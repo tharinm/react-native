@@ -6,7 +6,7 @@ import {
   Text,
   TextInput,
   View,
-  ScrollView,
+  ScrollView,FlatList
 } from "react-native";
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
         />
       </View>
       <View>
-        <ScrollView>
+        <FlatList>
           {goals.map((val, key) => {
             return (
               <View key={key} style={styles.list}>
@@ -44,7 +44,7 @@ export default function App() {
               </View>
             );
           })}
-        </ScrollView>
+        </FlatList>
       </View>
     </View>
   );
